@@ -10,7 +10,7 @@ const LoginByEmail = (req,res) =>{
 
     res.cookie("token" , token  , {httpOnly :true , secure: false })
     // res.json({ message: "Login successful", user, token });
-    res.redirect('http://localhost:5173/')
+    res.redirect('https://meetup-clone-1.netlify.app/')
 } 
 // using google auth
 

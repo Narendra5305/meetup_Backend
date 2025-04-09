@@ -8,7 +8,8 @@ const LoginByEmail = (req,res) =>{
     const user = req.user ;
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET , {expiresIn : "1d"});
 
-    res.cookie("token" , token  , {httpOnly :true , secure: false })
+    res.cookie("token" , token   , {httpOnly :true , secure: false })
+    res.cookie("userId", user._id  , {httpOnly :false , secure: false })
     // res.json({ message: "Login successful", user, token });
     res.redirect('https://meetup-clone-1.netlify.app/')
 } 
@@ -58,7 +59,7 @@ const LoginUser =async (req,res) =>{
                     res.status(401).json({"there has been an error" : err})
                 }else{
                     const token =await jwt.sign({ id: user._id }, process.env.JWT_SECRET , {expiresIn : "1d"});
-                    res.status(200).json({"msg":"sign in successfull",token})
+                    res.status(200).json({"msg":"sign in successfull",token ,"userId":user._id})
                 }
             });
         }else{

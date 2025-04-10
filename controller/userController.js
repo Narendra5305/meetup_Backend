@@ -8,10 +8,11 @@ const LoginByEmail = (req,res) =>{
     const user = req.user ;
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET , {expiresIn : "1d"});
 
-    res.cookie("token" , token   , {httpOnly :true , secure: false })
-    res.cookie("userId", user._id  , {httpOnly :false , secure: false })
-    // res.json({ message: "Login successful", user, token });
-    res.redirect('https://meetup-clone-1.netlify.app/')
+    // res.cookie("token" , token   , {httpOnly :true , secure: false })
+    // res.cookie("userId", user._id  , {httpOnly :false , secure: false })
+
+    res.json({ message: "Login successful", "userId": user._id, token });
+    // res.redirect('https://meetup-clone-1.netlify.app/')
 } 
 // using google auth
 

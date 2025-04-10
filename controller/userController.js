@@ -15,7 +15,7 @@ const LoginByEmail = (req,res) =>{
     res.redirect(`https://meetup-clone-1.netlify.app/signinSuccess?token=${token}&userId=${user._id}`);
 
 } 
-// using google auth
+
 
 
 
